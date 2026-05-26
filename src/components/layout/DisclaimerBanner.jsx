@@ -12,7 +12,7 @@ export default function DisclaimerBanner() {
         <p className="leading-relaxed">
           <span className="text-tiffany font-medium">Risk Disclosure:</span> Past performance is not indicative of future results. Investments involve risk of loss of principal.
         </p>
-        <button onClick={() => setVisible(false)} className="text-gray-500 hover:text-white flex-shrink-0">
+        <button onClick={() => setVisible(false)} className="text-gray-500 hover:text-white flex-shrink-0" aria-label="Dismiss banner">
           <X className="w-4 h-4" />
         </button>
       </div>

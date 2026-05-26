@@ -6,14 +6,12 @@ export default function Footer() {
   const { t, lang } = useLanguage();
 
   const footerLinks = {
-    [t('footer_fund')]: [
-      { label: t('nav_fund'), path: '/Fund' },
+    [lang === 'ru' ? 'Компания' : 'Company']: [
       { label: t('nav_strategy'), path: '/Strategy' },
       { label: t('nav_portfolio'), path: '/Portfolio' },
       { label: t('nav_team'), path: '/Team' },
     ],
     [t('footer_investors')]: [
-      { label: t('nav_pipeline'), path: '/Pipeline' },
       { label: t('nav_insights'), path: '/MarketInsights' },
       { label: t('nav_investors'), path: '/ForInvestors' },
       { label: t('nav_contact'), path: '/Contact' },

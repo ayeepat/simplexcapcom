@@ -11,11 +11,9 @@ import About from './pages/About';
 import Strategy from './pages/Strategy';
 import Portfolio from './pages/Portfolio';
 import Team from './pages/Team';
-import Pipeline from './pages/Pipeline';
 import MarketInsights from './pages/MarketInsights';
 import ForInvestors from './pages/ForInvestors';
 import Contact from './pages/Contact';
-import Fund from './pages/Fund';
 
 function App() {
   return (
@@ -26,12 +24,10 @@ function App() {
             <Route element={<SiteLayout />}>
               <Route path="/" element={<Navigate to="/Home" replace />} />
               <Route path="/Home" element={<Home />} />
-              <Route path="/Fund" element={<Fund />} />
               <Route path="/About" element={<About />} />
               <Route path="/Strategy" element={<Strategy />} />
               <Route path="/Portfolio" element={<Portfolio />} />
               <Route path="/Team" element={<Team />} />
-              <Route path="/Pipeline" element={<Pipeline />} />
               <Route path="/MarketInsights" element={<MarketInsights />} />
               <Route path="/ForInvestors" element={<ForInvestors />} />
               <Route path="/Contact" element={<Contact />} />

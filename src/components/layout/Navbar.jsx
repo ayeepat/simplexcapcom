@@ -19,11 +19,9 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t('nav_home'), path: '/Home' },
-    { label: t('nav_fund'), path: '/Fund' },
     { label: t('nav_strategy'), path: '/Strategy' },
     { label: t('nav_portfolio'), path: '/Portfolio' },
     { label: t('nav_team'), path: '/Team' },
-    { label: t('nav_pipeline'), path: '/Pipeline' },
     { label: t('nav_insights'), path: '/MarketInsights' },
     { label: t('nav_investors'), path: '/ForInvestors' },
     { label: t('nav_contact'), path: '/Contact' },
@@ -99,7 +97,7 @@ export default function Navbar() {
             </div>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <button className="p-2 text-gray-600">
+                <button className="p-2 text-gray-600" aria-label="Toggle navigation menu">
                   <Menu className="w-6 h-6" />
                 </button>
               </SheetTrigger>
