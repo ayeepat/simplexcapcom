@@ -16,24 +16,24 @@ export default function Strategy() {
   ];
 
   const techModels = [
-    { icon: Globe, label: 'Sharing Economy' },
-    { icon: BarChart3, label: 'Big Data & Analytics' },
-    { icon: Cloud, label: 'Cloud Computing' },
-    { icon: Zap, label: 'Smart Grid' },
-    { icon: Monitor, label: 'IT Outsourcing' },
-    { icon: Cpu, label: 'Enterprise Software' },
-    { icon: Package, label: 'New-Age Hardware' },
-    { icon: CreditCard, label: 'Payment Solutions' },
+    { icon: Globe, label: t('strategy_sharing_economy') },
+    { icon: BarChart3, label: t('strategy_big_data') },
+    { icon: Cloud, label: t('strategy_cloud') },
+    { icon: Zap, label: t('strategy_smart_grid') },
+    { icon: Monitor, label: t('strategy_it_outsourcing') },
+    { icon: Cpu, label: t('strategy_enterprise_software') },
+    { icon: Package, label: t('strategy_hardware') },
+    { icon: CreditCard, label: t('strategy_payments') },
   ];
 
   const markets = [
-    { icon: Building, label: 'B2B / B2C Platforms' },
-    { icon: Cpu, label: 'Internet of Things (IoT)' },
-    { icon: Truck, label: 'Logistics & Supply Chain' },
-    { icon: Database, label: 'Data Centers' },
-    { icon: CreditCard, label: 'FinTech' },
-    { icon: Shield, label: 'Cross-Sector IT Security' },
-    { icon: ShoppingCart, label: 'On-Demand Marketplaces' },
+    { icon: Building, label: t('strategy_b2b') },
+    { icon: Cpu, label: t('strategy_iot') },
+    { icon: Truck, label: t('strategy_logistics') },
+    { icon: Database, label: t('strategy_datacenters') },
+    { icon: CreditCard, label: t('strategy_fintech') },
+    { icon: Shield, label: t('strategy_security') },
+    { icon: ShoppingCart, label: t('strategy_marketplaces') },
   ];
 
   return (

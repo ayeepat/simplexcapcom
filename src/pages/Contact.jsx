@@ -91,7 +91,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 mb-1">{lang === 'ru' ? 'Офис' : 'Office'}</div>
-                      <div className="font-medium text-gray-900">{lang === 'ru' ? 'Лондон, Великобритания' : 'London, United Kingdom'}</div>
+                      <div className="font-medium text-gray-900">{lang === 'ru' ? 'Москва, Россия' : 'Moscow, Russia'}</div>
                     </div>
                   </div>
                 </div>

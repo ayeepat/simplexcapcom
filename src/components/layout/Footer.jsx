@@ -9,7 +9,6 @@ export default function Footer() {
     [lang === 'ru' ? 'Компания' : 'Company']: [
       { label: t('nav_strategy'), path: '/Strategy' },
       { label: t('nav_portfolio'), path: '/Portfolio' },
-      { label: t('nav_team'), path: '/Team' },
     ],
     [t('footer_investors')]: [
       { label: t('nav_insights'), path: '/MarketInsights' },

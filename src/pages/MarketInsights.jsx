@@ -14,19 +14,19 @@ const ipoData = [
 ];
 
 const assetReturns = [
-  { label: 'Technology (Avg)', value: 85, color: '#81D8D0' },
-  { label: 'S&P 500 (Avg)', value: 48, color: '#9CA3AF' },
-  { label: 'Real Estate (Avg)', value: 28, color: '#D1D5DB' },
-  { label: 'Bonds (Avg)', value: 12, color: '#E5E7EB' },
+  { labelKey: 'insights_tech_avg', value: 85, color: '#81D8D0' },
+  { labelKey: 'insights_sp500_avg', value: 48, color: '#9CA3AF' },
+  { labelKey: 'insights_realestate_avg', value: 28, color: '#D1D5DB' },
+  { labelKey: 'insights_bonds_avg', value: 12, color: '#E5E7EB' },
 ];
 
 const sectorAllocation = [
-  { name: 'Cybersecurity', value: 25 },
-  { name: 'Enterprise Software', value: 22 },
-  { name: 'Data Centers', value: 18 },
-  { name: 'FinTech', value: 15 },
-  { name: 'AI / ML', value: 12 },
-  { name: 'Other', value: 8 },
+  { nameKey: 'insights_cybersecurity', value: 25 },
+  { nameKey: 'insights_enterprise_software', value: 22 },
+  { nameKey: 'insights_datacenters', value: 18 },
+  { nameKey: 'insights_fintech', value: 15 },
+  { nameKey: 'insights_ai_ml', value: 12 },
+  { nameKey: 'insights_other', value: 8 },
 ];
 
 export default function MarketInsights() {
@@ -56,9 +56,9 @@ export default function MarketInsights() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <FadeInSection>
               <div>
-                <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-2">US IPO Market</h3>
-                <h4 className="text-2xl font-bold text-gray-900 mb-2">2025: 347 Total IPOs (+54% YoY)</h4>
-                <p className="text-gray-500 mb-8 leading-relaxed">Including 21 software & infrastructure listings, approaching the record 2021 year.</p>
+                <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-2">{t('insights_us_ipo')}</h3>
+                <h4 className="text-2xl font-bold text-gray-900 mb-2">{t('insights_ipo_2025')}</h4>
+                <p className="text-gray-500 mb-8 leading-relaxed">{t('insights_ipo_desc')}</p>
                 <div className="space-y-3">
                   {ipoData.map((item) => (
                     <div key={item.year} className="flex items-center gap-4">
@@ -80,14 +80,14 @@ export default function MarketInsights() {
 
             <FadeInSection delay={100}>
               <div>
-                <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-2">Asset Class Returns</h3>
-                <h4 className="text-2xl font-bold text-gray-900 mb-2">Technology vs Traditional Assets</h4>
-                <p className="text-gray-500 mb-8 leading-relaxed">Cumulative returns comparison (2015–2024).</p>
+                <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-2">{t('insights_asset_returns')}</h3>
+                <h4 className="text-2xl font-bold text-gray-900 mb-2">{t('insights_asset_title')}</h4>
+                <p className="text-gray-500 mb-8 leading-relaxed">{t('insights_asset_subtitle')}</p>
                 <div className="space-y-5">
                   {assetReturns.map((item) => (
-                    <div key={item.label}>
+                    <div key={item.labelKey}>
                       <div className="flex justify-between mb-2">
-                        <span className="text-sm font-medium text-gray-700">{item.label}</span>
+                        <span className="text-sm font-medium text-gray-700">{t(item.labelKey)}</span>
                         <span className="text-sm font-bold" style={{ color: item.color === '#81D8D0' ? '#4A9490' : '#6B7280' }}>
                           {item.value}%
                         </span>
@@ -112,20 +112,20 @@ export default function MarketInsights() {
       <section className="bg-gray-50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-4 text-center">Target Allocation</h3>
-            <h4 className="text-3xl font-bold text-gray-900 mb-12 text-center">Sector Diversification</h4>
+            <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-4 text-center">{t('insights_allocation')}</h3>
+            <h4 className="text-3xl font-bold text-gray-900 mb-12 text-center">{t('insights_allocation_title')}</h4>
           </FadeInSection>
           <div className="max-w-2xl mx-auto">
             <div className="space-y-4">
               {sectorAllocation.map((sector, i) => (
-                <FadeInSection key={sector.name} delay={i * 60}>
+                <FadeInSection key={sector.nameKey} delay={i * 60}>
                   <div className="bg-white rounded-xl p-5 flex items-center gap-5">
                     <div className="w-12 h-12 rounded-full bg-tiffany-50 flex items-center justify-center flex-shrink-0">
                       <span className="text-tiffany-700 font-bold text-sm">{sector.value}%</span>
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between mb-2">
-                        <span className="font-medium text-gray-900">{sector.name}</span>
+                        <span className="font-medium text-gray-900">{t(sector.nameKey)}</span>
                         <span className="text-gray-500 text-sm">{sector.value}%</span>
                       </div>
                       <div className="bg-gray-100 rounded-full h-2 overflow-hidden">
@@ -149,12 +149,12 @@ export default function MarketInsights() {
                 <TrendingUp className="w-7 h-7 text-tiffany" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white leading-relaxed mb-4">
-                Technology investments significantly <span className="text-tiffany">outperform all other asset classes</span>
+                {t('insights_quote')}
               </h3>
               <p className="text-gray-400 text-lg">
-                2025 US IPO stats: 347 total IPOs (+54%), 21 software/infrastructure – approaching the 2021 record.
+                {t('insights_quote_desc')}
               </p>
-              <p className="text-gray-500 text-xs mt-6">Source: PitchBook</p>
+              <p className="text-gray-500 text-xs mt-6">{t('insights_source')}</p>
             </div>
           </FadeInSection>
         </div>

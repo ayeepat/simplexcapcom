@@ -10,7 +10,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Strategy from './pages/Strategy';
 import Portfolio from './pages/Portfolio';
-import Team from './pages/Team';
 import MarketInsights from './pages/MarketInsights';
 import ForInvestors from './pages/ForInvestors';
 import Contact from './pages/Contact';
@@ -27,7 +26,6 @@ function App() {
               <Route path="/About" element={<About />} />
               <Route path="/Strategy" element={<Strategy />} />
               <Route path="/Portfolio" element={<Portfolio />} />
-              <Route path="/Team" element={<Team />} />
               <Route path="/MarketInsights" element={<MarketInsights />} />
               <Route path="/ForInvestors" element={<ForInvestors />} />
               <Route path="/Contact" element={<Contact />} />

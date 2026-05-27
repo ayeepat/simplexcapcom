@@ -21,7 +21,6 @@ export default function Navbar() {
     { label: t('nav_home'), path: '/Home' },
     { label: t('nav_strategy'), path: '/Strategy' },
     { label: t('nav_portfolio'), path: '/Portfolio' },
-    { label: t('nav_team'), path: '/Team' },
     { label: t('nav_insights'), path: '/MarketInsights' },
     { label: t('nav_investors'), path: '/ForInvestors' },
     { label: t('nav_contact'), path: '/Contact' },
