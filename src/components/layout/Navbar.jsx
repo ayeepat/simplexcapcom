@@ -9,7 +9,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const { lang, setLang, t } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -19,8 +19,10 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t('nav_home'), path: '/Home' },
+    { label: 'Fund', path: '/Fund' },
     { label: t('nav_strategy'), path: '/Strategy' },
     { label: t('nav_portfolio'), path: '/Portfolio' },
+    { label: 'Team', path: '/Team' },
     { label: t('nav_insights'), path: '/MarketInsights' },
     { label: t('nav_investors'), path: '/ForInvestors' },
     { label: t('nav_contact'), path: '/Contact' },
@@ -58,20 +60,6 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <div className="flex items-center rounded-full border border-gray-200 overflow-hidden text-sm font-semibold">
-              <button
-                onClick={() => setLang('en')}
-                className={`px-3 py-1.5 transition-all duration-300 ${lang === 'en' ? 'bg-tiffany text-white' : 'text-gray-500 hover:text-gray-800'}`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLang('ru')}
-                className={`px-3 py-1.5 transition-all duration-300 ${lang === 'ru' ? 'bg-tiffany text-white' : 'text-gray-500 hover:text-gray-800'}`}
-              >
-                RU
-              </button>
-            </div>
             <Link to="/Contact">
               <Button className="bg-tiffany hover:bg-tiffany-dark text-white rounded-full px-5 text-sm">
                 {t('nav_inquire')}
@@ -79,21 +67,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="lg:hidden flex items-center gap-2">
-            <div className="flex items-center rounded-full border border-gray-200 overflow-hidden text-sm font-semibold">
-              <button
-                onClick={() => setLang('en')}
-                className={`px-2.5 py-1 transition-all duration-300 ${lang === 'en' ? 'bg-tiffany text-white' : 'text-gray-500'}`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLang('ru')}
-                className={`px-2.5 py-1 transition-all duration-300 ${lang === 'ru' ? 'bg-tiffany text-white' : 'text-gray-500'}`}
-              >
-                RU
-              </button>
-            </div>
+          <div className="lg:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <button className="p-2 text-gray-600" aria-label="Toggle navigation menu">

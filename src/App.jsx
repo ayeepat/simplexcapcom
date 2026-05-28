@@ -13,6 +13,8 @@ import Portfolio from './pages/Portfolio';
 import MarketInsights from './pages/MarketInsights';
 import ForInvestors from './pages/ForInvestors';
 import Contact from './pages/Contact';
+import Fund from './pages/Fund';
+import Team from './pages/Team';
 
 function App() {
   return (
@@ -23,9 +25,10 @@ function App() {
             <Route element={<SiteLayout />}>
               <Route path="/" element={<Navigate to="/Home" replace />} />
               <Route path="/Home" element={<Home />} />
-              <Route path="/About" element={<About />} />
+              <Route path="/Fund" element={<Fund />} />
               <Route path="/Strategy" element={<Strategy />} />
               <Route path="/Portfolio" element={<Portfolio />} />
+              <Route path="/Team" element={<Team />} />
               <Route path="/MarketInsights" element={<MarketInsights />} />
               <Route path="/ForInvestors" element={<ForInvestors />} />
               <Route path="/Contact" element={<Contact />} />

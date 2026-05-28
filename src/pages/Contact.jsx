@@ -82,7 +82,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 mb-1">Email</div>
-                      <div className="font-medium text-gray-900">ir@simplexcapital.com</div>
+                      <div className="font-medium text-gray-900">ir@simplex-cap.com</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -91,7 +91,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 mb-1">{lang === 'ru' ? 'Офис' : 'Office'}</div>
-                      <div className="font-medium text-gray-900">{lang === 'ru' ? 'Москва, Россия' : 'Moscow, Russia'}</div>
+                      <div className="font-medium text-gray-900">{lang === 'ru' ? 'Москва, Россия' : 'Abu Dhabi, UAE'}</div>
                     </div>
                   </div>
                 </div>
