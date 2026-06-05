@@ -22,7 +22,6 @@ export default function Navbar() {
     { label: 'Fund', path: '/Fund' },
     { label: t('nav_strategy'), path: '/Strategy' },
     { label: t('nav_portfolio'), path: '/Portfolio' },
-    { label: 'Team', path: '/Team' },
     { label: t('nav_insights'), path: '/MarketInsights' },
     { label: t('nav_investors'), path: '/ForInvestors' },
     { label: t('nav_contact'), path: '/Contact' },
@@ -86,7 +85,6 @@ export default function Navbar() {
                       <span className="text-lg font-bold text-gray-900">Simplex Capital</span>
                     </div>
                   </div>
-
                   <div className="flex-1 py-4">
                     {navLinks.map((link) => (
                       <Link
@@ -103,7 +101,6 @@ export default function Navbar() {
                       </Link>
                     ))}
                   </div>
-
                   <div className="p-6 border-t">
                     <Link to="/Contact" onClick={() => setOpen(false)}>
                       <Button className="w-full bg-tiffany hover:bg-tiffany-dark text-white rounded-full">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, Briefcase, Users } from 'lucide-react';
+import { ArrowRight, TrendingUp, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import StatCounter from '@/components/shared/StatCounter';
 import FadeInSection from '@/components/shared/FadeInSection';
@@ -22,12 +22,6 @@ export default function Home() {
       description: t('home_card_portfolio_desc'),
       link: '/Portfolio',
     },
-    {
-      icon: Users,
-      title: t('home_card_team_title'),
-      description: t('home_card_team_desc'),
-      link: '/Team',
-    },
   ];
 
   return (
@@ -42,7 +36,6 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 via-gray-900/50 to-gray-900/20" />
         </div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
             <h1 className="animate-fade-in-up text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4">
@@ -74,7 +67,7 @@ export default function Home() {
             <StatCounter prefix="$" value={5} suffix="B+" label={t('home_stats_aum')} delay={100} />
             <StatCounter value={25} suffix="+" label={t('home_stats_exp')} delay={200} />
             <StatCounter value={50} suffix="+" label={t('home_stats_ipo')} delay={300} />
-            <StatCounter value={10} suffix="×" label={t('home_stats_growth')} delay={400} />
+            <StatCounter value={10} suffix="x" label={t('home_stats_growth')} delay={400} />
           </div>
         </div>
       </section>
@@ -82,7 +75,7 @@ export default function Home() {
       {/* Teaser Cards */}
       <section className="bg-gray-50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {teaserCards.map((card, i) => (
               <FadeInSection key={card.title} delay={i * 100}>
                 <Link to={card.link} className="group block">
@@ -94,7 +87,7 @@ export default function Home() {
                     <div className="h-20 mb-4 flex items-start">
                       {card.link === '/Strategy' ? (
                         <div className="flex flex-wrap gap-1.5 content-start">
-                          {card.description.split(' · ').map((/** @type {string} */ theme) => (
+                          {card.description.split(' · ').map((theme) => (
                             <span key={theme} className="inline-block text-xs font-medium text-tiffany-700 bg-tiffany-50 rounded-full px-2.5 py-1 leading-tight">{theme}</span>
                           ))}
                         </div>

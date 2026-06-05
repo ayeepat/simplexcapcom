@@ -4,7 +4,6 @@ import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { LanguageProvider } from '@/lib/LanguageContext';
-
 import SiteLayout from './components/layout/SiteLayout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,7 +13,6 @@ import MarketInsights from './pages/MarketInsights';
 import ForInvestors from './pages/ForInvestors';
 import Contact from './pages/Contact';
 import Fund from './pages/Fund';
-import Team from './pages/Team';
 
 function App() {
   return (
@@ -28,7 +26,6 @@ function App() {
               <Route path="/Fund" element={<Fund />} />
               <Route path="/Strategy" element={<Strategy />} />
               <Route path="/Portfolio" element={<Portfolio />} />
-              <Route path="/Team" element={<Team />} />
               <Route path="/MarketInsights" element={<MarketInsights />} />
               <Route path="/ForInvestors" element={<ForInvestors />} />
               <Route path="/Contact" element={<Contact />} />

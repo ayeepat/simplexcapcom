@@ -1,66 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- Главная страница -->
   <url>
     <loc>https://simplex-cap.com/Home</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Страница фонда -->
   <url>
     <loc>https://simplex-cap.com/Fund</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Инвестиционная стратегия -->
   <url>
     <loc>https://simplex-cap.com/Strategy</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Портфолио -->
   <url>
     <loc>https://simplex-cap.com/Portfolio</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Команда -->
-  <url>
-    <loc>https://simplex-cap.com/Team</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Аналитика рынка -->
   <url>
     <loc>https://simplex-cap.com/MarketInsights</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Для инвесторов -->
   <url>
     <loc>https://simplex-cap.com/ForInvestors</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Контакты -->
   <url>
     <loc>https://simplex-cap.com/Contact</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
