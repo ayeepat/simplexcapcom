@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Запрет на индексацию служебных и технических директорий
+Disallow: /api/
+Disallow: /supabase/
+Disallow: /entities/
+Disallow: /src/
+
+# Карта сайта
+Sitemap: https://simplex-cap.com/sitemap.xml

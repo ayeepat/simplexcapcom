@@ -1,0 +1,40 @@
+# Simplex Capital
+
+> Simplex Capital is a premier institutional-grade investment firm driving technological development and economic diversification through strategic investments in high-growth tech companies. We focus on Series C/D businesses with clear paths to IPO exits across global exchanges.
+
+## About Us
+- **Focus**: Strategic technology investments, Series C/D stage, IPO pathways.
+- **Track Record**: 25+ years of PE/VC experience, 50+ completed IPOs, $5B+ Assets Under Management.
+- **Headquarters**: Abu Dhabi, UAE.
+- **Contact**: ir@simplex-cap.com
+
+## Investment Strategy
+Our strategy targets high-growth technology companies at inflection points. 
+- **Investment Themes**: Intelligent Automation, AI & Social Solutions, Platform Economy, Predictable Disruption, Digital Trust.
+- **Technologies**: Sharing Economy, Big Data & Analytics, Cloud Computing, Smart Grid, IT Outsourcing, Enterprise Software, New-Age Hardware, Payment Solutions.
+- **Markets**: B2B/B2C Platforms, IoT, Logistics & Supply Chain, Data Centers, FinTech, Cross-Sector IT Security, On-Demand Marketplaces.
+
+## Portfolio Highlights
+We have a proven track record of successful investments and exits, including:
+- **VK (Mail.ru Group)**: Largest social network in Russia/CIS.
+- **OCSiAl**: World's largest industrial producer of graphene nanotubes.
+- **EPAM Systems**: Global digital platform engineering leader (NYSE-listed).
+- **Softline**: Leading global IT solutions provider (LSE-listed).
+- **DataArt**: Global technology consultancy.
+- **Gett**: Leading corporate transportation platform.
+- **MTS**: Russia's largest mobile operator.
+- **NMG (National Media Group)**: Largest private media holding in Russia.
+
+## For Investors
+We welcome inquiries from institutional investors, development finance institutions, family offices, and qualified private investors. 
+- **Fund Structure**: Cayman Islands-domiciled Limited Partnership.
+- **Target Fund Size**: $150M.
+- **Fund Term**: 10 Years.
+- **Average Hold**: 3-5 Years.
+
+## Optional
+- [Investment Strategy](https://simplex-cap.com/Strategy): Detailed overview of our investment themes, technologies, and markets.
+- [Portfolio](https://simplex-cap.com/Portfolio): Comprehensive list of our past and current investments.
+- [Market Insights](https://simplex-cap.com/MarketInsights): Data-driven analysis on technology outperforming other asset classes.
+- [For Investors](https://simplex-cap.com/ForInvestors): Information on fund structure, value-add, and next steps for LPs.
+- [Contact](https://simplex-cap.com/Contact): Reach out to our investor relations team.
