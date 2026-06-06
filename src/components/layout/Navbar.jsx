@@ -34,7 +34,7 @@ export default function Navbar() {
           <Link to="/Home" className="flex items-center gap-2 flex-shrink-0">
             <img
               src="/images/logo3.png"
-              alt="Simplex Capital"
+              alt="Simplex Capital - Tech Venture Capital & Strategic Technology Investments"
               className="h-20 w-auto"
             />
             <div className="hidden sm:block">

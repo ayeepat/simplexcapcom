@@ -31,7 +31,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img
             src="/images/home.jpg"
-            alt="Corporate Architecture"
+            alt="Simplex Capital - Tech Venture Capital & Strategic Technology Investments"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 via-gray-900/50 to-gray-900/20" />
