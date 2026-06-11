@@ -6620,7 +6620,7 @@ export default function Fund() {
     { icon: Target, label: 'Investment Focus', value: 'Series C/D' },
     { icon: Calendar, label: 'Fund Term', value: '10 Years' },
     { icon: Clock, label: 'Average Hold', value: '3-5 Years' },
-    { icon: DollarSign, label: 'Target Fund Size', value: '$150M' },
+    { icon: DollarSign, label: 'Target Fund Size', value: '$300M' },
   ];
 
   return (
