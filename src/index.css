@@ -4,39 +4,39 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 13% 18%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 13% 18%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 18%;
+    --background: 40 26% 97%;
+    --foreground: 200 12% 9%;
+    --card: 40 26% 97%;
+    --card-foreground: 200 12% 9%;
+    --popover: 40 26% 97%;
+    --popover-foreground: 200 12% 9%;
     --primary: 174 46% 67%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 220 13% 18%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 220 9% 46%;
+    --primary-foreground: 200 20% 10%;
+    --secondary: 40 18% 92%;
+    --secondary-foreground: 200 12% 9%;
+    --muted: 40 18% 92%;
+    --muted-foreground: 200 6% 40%;
     --accent: 174 46% 67%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 174 46% 67%;
+    --accent-foreground: 200 20% 10%;
+    --destructive: 6 74% 45%;
+    --destructive-foreground: 40 26% 97%;
+    --border: 200 10% 85%;
+    --input: 200 10% 85%;
+    --ring: 174 40% 45%;
     --chart-1: 174 46% 67%;
     --chart-2: 174 46% 57%;
     --chart-3: 174 46% 47%;
     --chart-4: 174 46% 77%;
     --chart-5: 174 46% 37%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --radius: 0.25rem;
+    --sidebar-background: 40 26% 97%;
+    --sidebar-foreground: 200 12% 20%;
     --sidebar-primary: 174 46% 67%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 174 46% 67%;
+    --sidebar-primary-foreground: 200 20% 10%;
+    --sidebar-accent: 40 18% 92%;
+    --sidebar-accent-foreground: 200 12% 9%;
+    --sidebar-border: 200 10% 85%;
+    --sidebar-ring: 174 40% 45%;
   }
 }
 
@@ -47,6 +47,13 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'ss01' 1, 'cv01' 1;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background-color: #14181B;
+    color: #FAF8F3;
   }
 }
 
@@ -54,10 +61,45 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hero section heights: dvh keeps full-bleed heroes from jumping as mobile
+   browser chrome (address bar) shows/hides — vh is the fallback for browsers
+   that don't support it yet. Two declarations on one rule, not two classes,
+   so the cascade order is guaranteed regardless of Tailwind's build order. */
+.min-h-hero-xl { min-height: 92vh; min-height: 92dvh; }
+.min-h-hero-lg { min-height: 68vh; min-height: 68dvh; }
+.min-h-hero-md { min-height: 56vh; min-height: 56dvh; }
+
+/* Fine paper grain — layered over dark/hero sections for tactile, printed depth.
+   Relies on the element already being positioned (e.g. Tailwind's `absolute` /
+   `relative`) — this class must not set `position` itself, or it will win the
+   cascade over that utility class and collapse the element out of its layout. */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Animated underline for editorial text links */
+.underline-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.underline-sweep:hover {
+  background-size: 100% 1px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -66,25 +108,59 @@ html {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out forwards;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in-up-delay-1 {
-  animation: fadeInUp 0.7s ease-out 0.1s forwards;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-up-delay-2 {
-  animation: fadeInUp 0.7s ease-out 0.2s forwards;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-up-delay-3 {
-  animation: fadeInUp 0.7s ease-out 0.3s forwards;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.36s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-up-delay-4 {
-  animation: fadeInUp 0.7s ease-out 0.4s forwards;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
   opacity: 0;
+}
+
+/* Route change: a brief settle-in so navigating between pages feels like one
+   continuous piece rather than a hard cut. */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-page-enter {
+  animation: pageEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slow, subtle zoom-out on hero photography — reads as considered motion,
+   not a "look at me" effect. Runs once on mount. */
+@keyframes heroZoom {
+  from { transform: scale(1.06); }
+  to { transform: scale(1); }
+}
+.animate-hero-zoom {
+  animation: heroZoom 8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-enter,
+  .animate-hero-zoom,
+  .animate-fade-in-up,
+  .animate-fade-in-up-delay-1,
+  .animate-fade-in-up-delay-2,
+  .animate-fade-in-up-delay-3,
+  .animate-fade-in-up-delay-4 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

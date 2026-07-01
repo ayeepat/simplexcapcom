@@ -1,75 +1,64 @@
 import React from 'react';
 import FadeInSection from '@/components/shared/FadeInSection';
+import SectionHeader from '@/components/shared/SectionHeader';
+import Eyebrow from '@/components/shared/Eyebrow';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Brain, Shield, Globe, Zap, Lock, Monitor, Cloud, Cpu, CreditCard, Package, BarChart3, Truck, Database, Building, ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Strategy() {
   const { t } = useLanguage();
 
   const visionAreas = [
-    { icon: Brain, title: t('strategy_theme1_title'), description: t('strategy_theme1_desc') },
-    { icon: Zap, title: t('strategy_theme2_title'), description: t('strategy_theme2_desc') },
-    { icon: Globe, title: t('strategy_theme3_title'), description: t('strategy_theme3_desc') },
-    { icon: Monitor, title: t('strategy_theme4_title'), description: t('strategy_theme4_desc') },
-    { icon: Lock, title: t('strategy_theme5_title'), description: t('strategy_theme5_desc') },
+    { title: t('strategy_theme1_title'), description: t('strategy_theme1_desc') },
+    { title: t('strategy_theme2_title'), description: t('strategy_theme2_desc') },
+    { title: t('strategy_theme3_title'), description: t('strategy_theme3_desc') },
+    { title: t('strategy_theme4_title'), description: t('strategy_theme4_desc') },
+    { title: t('strategy_theme5_title'), description: t('strategy_theme5_desc') },
   ];
 
   const techModels = [
-    { icon: Globe, label: t('strategy_sharing_economy') },
-    { icon: BarChart3, label: t('strategy_big_data') },
-    { icon: Cloud, label: t('strategy_cloud') },
-    { icon: Zap, label: t('strategy_smart_grid') },
-    { icon: Monitor, label: t('strategy_it_outsourcing') },
-    { icon: Cpu, label: t('strategy_enterprise_software') },
-    { icon: Package, label: t('strategy_hardware') },
-    { icon: CreditCard, label: t('strategy_payments') },
+    t('strategy_sharing_economy'), t('strategy_big_data'), t('strategy_cloud'), t('strategy_smart_grid'),
+    t('strategy_it_outsourcing'), t('strategy_enterprise_software'), t('strategy_hardware'), t('strategy_payments'),
   ];
 
   const markets = [
-    { icon: Building, label: t('strategy_b2b') },
-    { icon: Cpu, label: t('strategy_iot') },
-    { icon: Truck, label: t('strategy_logistics') },
-    { icon: Database, label: t('strategy_datacenters') },
-    { icon: CreditCard, label: t('strategy_fintech') },
-    { icon: Shield, label: t('strategy_security') },
-    { icon: ShoppingCart, label: t('strategy_marketplaces') },
+    t('strategy_b2b'), t('strategy_iot'), t('strategy_logistics'), t('strategy_datacenters'),
+    t('strategy_fintech'), t('strategy_security'), t('strategy_marketplaces'),
+  ];
+
+  const deepDive = [
+    { value: 'exit', title: t('strategy_exit_title'), desc: t('strategy_exit_desc') },
+    { value: 'selection', title: t('strategy_selection_title'), desc: t('strategy_selection_desc') },
+    { value: 'risk', title: t('strategy_risk_title'), desc: t('strategy_risk_desc') },
+    { value: 'value', title: t('strategy_value_title'), desc: t('strategy_value_desc') },
   ];
 
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/strategy.jpg"
-            alt="Strategy"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/75 to-gray-900/50" />
+      <section className="relative overflow-hidden min-h-hero-md flex items-center">
+        <div className="grain absolute inset-0 z-0">
+          <img src="/images/strategy.webp" alt="Strategy" className="w-full h-full object-cover animate-hero-zoom" fetchpriority="high" decoding="async" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/40" />
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <span className="inline-block text-tiffany text-sm font-semibold uppercase tracking-widest mb-4 animate-fade-in-up">{t('strategy_label')}</span>
-          <h1 className="animate-fade-in-up-delay-1 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">{t('strategy_title')}</h1>
-          <p className="animate-fade-in-up-delay-2 text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">{t('strategy_desc')}</p>
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center">
+          <div className="flex justify-center mb-6"><Eyebrow index="01" invert>{t('strategy_label')}</Eyebrow></div>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-paper leading-[1.08] mb-6">{t('strategy_title')}</h1>
+          <p className="text-lg sm:text-xl text-paper/60 leading-relaxed max-w-2xl mx-auto">{t('strategy_desc')}</p>
         </div>
       </section>
 
       {/* Vision Blocks */}
-      <section className="bg-white py-24">
+      <section className="bg-paper py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
-            <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-12 text-center">{t('strategy_themes_label')}</h3>
-          </FadeInSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SectionHeader index="02" label={t('strategy_themes_label')} title="Where we see the decade heading" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t border-l border-ink-900/10">
             {visionAreas.map((area, i) => (
-              <FadeInSection key={area.title} delay={i * 80}>
-                <div className="bg-gray-50 rounded-2xl p-8 h-full hover:bg-tiffany-50 transition-colors group">
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-5 group-hover:bg-tiffany-100 transition-colors shadow-sm">
-                    <area.icon className="w-6 h-6 text-tiffany-700" />
-                  </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3">{area.title}</h4>
-                  <p className="text-gray-500 leading-relaxed">{area.description}</p>
+              <FadeInSection key={area.title} delay={i * 80} className="border-r border-b border-ink-900/10">
+                <div className="p-7 h-full">
+                  <div className="font-mono text-xs text-tiffany-700 mb-4">{String(i + 1).padStart(2, '0')}</div>
+                  <h4 className="font-display text-lg text-ink-900 mb-3 leading-snug">{area.title}</h4>
+                  <p className="text-sm text-ink-500 leading-relaxed">{area.description}</p>
                 </div>
               </FadeInSection>
             ))}
@@ -78,43 +67,29 @@ export default function Strategy() {
       </section>
 
       {/* Two Column Layout */}
-      <section className="bg-gray-50 py-24">
+      <section className="bg-ink-950 py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <FadeInSection>
-              <div className="bg-white rounded-3xl p-8 sm:p-10 h-full">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-sm font-semibold text-tiffany uppercase tracking-widest">{t('strategy_tech_label')}</span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">{t('strategy_tech_title')}</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {techModels.map((item) => (
-                    <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors">
-                      <div className="w-10 h-10 rounded-lg bg-tiffany-50 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-tiffany-700" />
-                      </div>
-                      <span className="text-sm font-medium text-gray-700">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
+              <Eyebrow index="03" invert className="mb-3">{t('strategy_tech_label')}</Eyebrow>
+              <h3 className="font-display text-2xl sm:text-3xl text-paper mb-10">{t('strategy_tech_title')}</h3>
+              <div className="border-t border-paper/10">
+                {techModels.map((item) => (
+                  <div key={item} className="flex items-center justify-between py-4 border-b border-paper/10">
+                    <span className="text-paper/70">{item}</span>
+                  </div>
+                ))}
               </div>
             </FadeInSection>
             <FadeInSection delay={100}>
-              <div className="bg-white rounded-3xl p-8 sm:p-10 h-full">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-sm font-semibold text-tiffany uppercase tracking-widest">{t('strategy_markets_label')}</span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">{t('strategy_markets_title')}</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {markets.map((item) => (
-                    <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors">
-                      <div className="w-10 h-10 rounded-lg bg-tiffany-50 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-tiffany-700" />
-                      </div>
-                      <span className="text-sm font-medium text-gray-700">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
+              <Eyebrow index="04" invert className="mb-3">{t('strategy_markets_label')}</Eyebrow>
+              <h3 className="font-display text-2xl sm:text-3xl text-paper mb-10">{t('strategy_markets_title')}</h3>
+              <div className="border-t border-paper/10">
+                {markets.map((item) => (
+                  <div key={item} className="flex items-center justify-between py-4 border-b border-paper/10">
+                    <span className="text-paper/70">{item}</span>
+                  </div>
+                ))}
               </div>
             </FadeInSection>
           </div>
@@ -122,45 +97,24 @@ export default function Strategy() {
       </section>
 
       {/* Accordion */}
-      <section className="bg-white py-24">
+      <section className="bg-paper py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
-            <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-8 text-center">{t('strategy_deepdive_label')}</h3>
-            <Accordion type="single" collapsible className="space-y-3">
-              <AccordionItem value="exit" className="bg-gray-50 rounded-xl border-none px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900 hover:no-underline">
-                  {t('strategy_exit_title')}
+          <SectionHeader align="center" index="05" label={t('strategy_deepdive_label')} title="Strategy in detail" />
+          <Accordion type="single" collapsible className="border-t border-ink-900/10">
+            {deepDive.map((item, i) => (
+              <AccordionItem key={item.value} value={item.value} className="border-b border-ink-900/10">
+                <AccordionTrigger className="text-left py-6 hover:no-underline group">
+                  <span className="flex items-baseline gap-5">
+                    <span className="font-mono text-xs text-tiffany-700">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="font-display text-lg sm:text-xl text-ink-900">{item.title}</span>
+                  </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed">
-                  {t('strategy_exit_desc')}
+                <AccordionContent className="text-ink-500 leading-relaxed pl-[3.25rem] pr-8">
+                  {item.desc}
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="selection" className="bg-gray-50 rounded-xl border-none px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900 hover:no-underline">
-                  {t('strategy_selection_title')}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed">
-                  {t('strategy_selection_desc')}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="risk" className="bg-gray-50 rounded-xl border-none px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900 hover:no-underline">
-                  {t('strategy_risk_title')}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed">
-                  {t('strategy_risk_desc')}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="value" className="bg-gray-50 rounded-xl border-none px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900 hover:no-underline">
-                  {t('strategy_value_title')}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed">
-                  {t('strategy_value_desc')}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </FadeInSection>
+            ))}
+          </Accordion>
         </div>
       </section>
     </div>

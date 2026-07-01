@@ -48,11 +48,11 @@ export default function StatCounter({ value, suffix = '', prefix = '', label, de
   }, [started, value, delay]);
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-tiffany mb-2">
+    <div ref={ref}>
+      <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-ink-900 tabular-nums mb-2">
         {prefix}{count}{suffix}
       </div>
-      <div className="text-xs text-gray-500 font-medium tracking-wide">{label}</div>
+      <div className="font-mono text-[11px] text-ink-500 uppercase tracking-[0.16em] leading-snug">{label}</div>
     </div>
   );
 }

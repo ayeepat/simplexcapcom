@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import FadeInSection from '@/components/shared/FadeInSection';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Network, TrendingUp, Globe, Lightbulb } from 'lucide-react';
+import SectionHeader from '@/components/shared/SectionHeader';
+import Eyebrow from '@/components/shared/Eyebrow';
+import Cta from '@/components/shared/Cta';
 import { useLanguage } from '@/lib/LanguageContext';
 
 const nextSteps = [
@@ -23,47 +23,38 @@ export default function ForInvestors() {
   const { t, lang } = useLanguage();
 
   const valueAddItems = [
-    { icon: Network, title: lang === 'ru' ? 'Доступ к сети' : 'Network Access', description: lang === 'ru' ? '25+ лет проприетарных отношений с основателями, со-инвесторами, биржами и стратегическими партнёрами по всему миру.' : '25+ years of proprietary relationships with founders, co-investors, exchanges, and strategic partners worldwide.' },
-    { icon: TrendingUp, title: lang === 'ru' ? 'Дивиденды и капитализация' : 'Dividends & Capitalization', description: lang === 'ru' ? 'Активное участие в советах директоров, оптимизация выручки и устойчивый рост стоимости.' : 'Active board participation driving revenue optimization, operational efficiency, and sustainable value creation.' },
-    { icon: Globe, title: lang === 'ru' ? 'Международный рост' : 'International Growth', description: lang === 'ru' ? 'Стратегии выхода на глобальные рынки с поддержкой в регуляторных и партнёрских вопросах.' : 'Structured go-global strategies enabling portfolio companies to expand across markets with regulatory and partnership support.' },
-    { icon: Lightbulb, title: lang === 'ru' ? 'Умные деньги' : 'Smart Money', description: lang === 'ru' ? 'Подбор управленцев, привлечение клиентов, M&A консультации и подготовка к IPO на биржах Лондона, Нью-Йорка и Москвы.' : 'Executive recruitment, customer introductions, M&A advisory, and comprehensive IPO preparation across London, NY, and Moscow exchanges.' },
+    { title: lang === 'ru' ? 'Доступ к сети' : 'Network Access', description: lang === 'ru' ? '25+ лет проприетарных отношений с основателями, со-инвесторами, биржами и стратегическими партнёрами по всему миру.' : '25+ years of proprietary relationships with founders, co-investors, exchanges, and strategic partners worldwide.' },
+    { title: lang === 'ru' ? 'Дивиденды и капитализация' : 'Dividends & Capitalization', description: lang === 'ru' ? 'Активное участие в советах директоров, оптимизация выручки и устойчивый рост стоимости.' : 'Active board participation driving revenue optimization, operational efficiency, and sustainable value creation.' },
+    { title: lang === 'ru' ? 'Международный рост' : 'International Growth', description: lang === 'ru' ? 'Стратегии выхода на глобальные рынки с поддержкой в регуляторных и партнёрских вопросах.' : 'Structured go-global strategies enabling portfolio companies to expand across markets with regulatory and partnership support.' },
+    { title: lang === 'ru' ? 'Умные деньги' : 'Smart Money', description: lang === 'ru' ? 'Подбор управленцев, привлечение клиентов, M&A консультации и подготовка к IPO на биржах Лондона, Нью-Йорка и Москвы.' : 'Executive recruitment, customer introductions, M&A advisory, and comprehensive IPO preparation across London, NY, and Moscow exchanges.' },
   ];
 
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/forinvestors.jpg"
-            alt="For Investors"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/75 to-gray-900/50" />
+      <section className="relative overflow-hidden min-h-hero-md flex items-center">
+        <div className="grain absolute inset-0 z-0">
+          <img src="/images/forinvestors.webp" alt="For Investors" className="w-full h-full object-cover animate-hero-zoom" fetchpriority="high" decoding="async" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/40" />
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <span className="inline-block text-tiffany text-sm font-semibold uppercase tracking-widest mb-4 animate-fade-in-up">{t('investors_label')}</span>
-          <h1 className="animate-fade-in-up-delay-1 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">{t('investors_title')}</h1>
-          <p className="animate-fade-in-up-delay-2 text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">{t('investors_desc')}</p>
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center">
+          <div className="flex justify-center mb-6"><Eyebrow index="01" invert>{t('investors_label')}</Eyebrow></div>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-paper leading-[1.08] mb-6">{t('investors_title')}</h1>
+          <p className="text-lg sm:text-xl text-paper/60 leading-relaxed max-w-2xl mx-auto">{t('investors_desc')}</p>
         </div>
       </section>
 
       {/* Value Add */}
-      <section className="bg-white py-24">
+      <section className="bg-paper py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
-            <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-4 text-center">{lang === 'ru' ? 'Добавленная стоимость' : 'Value Add'}</h3>
-            <h4 className="text-3xl font-bold text-gray-900 mb-12 text-center">{lang === 'ru' ? 'Больше чем капитал' : 'More Than Capital'}</h4>
-          </FadeInSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <SectionHeader index="02" label={lang === 'ru' ? 'Добавленная стоимость' : 'Value Add'} title={lang === 'ru' ? 'Больше чем капитал' : 'More than capital'} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-l border-ink-900/10">
             {valueAddItems.map((item, i) => (
-              <FadeInSection key={item.title} delay={i * 80}>
-                <div className="bg-gray-50 rounded-2xl p-8 h-full shadow-sm">
-                  <div className="w-12 h-12 rounded-xl bg-tiffany-50 flex items-center justify-center mb-5">
-                    <item.icon className="w-6 h-6 text-tiffany-700" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h4>
-                  <p className="text-gray-500 leading-relaxed">{item.description}</p>
+              <FadeInSection key={item.title} delay={i * 80} className="border-r border-b border-ink-900/10">
+                <div className="p-8 h-full">
+                  <div className="font-mono text-xs text-tiffany-700 mb-4">{String(i + 1).padStart(2, '0')}</div>
+                  <h4 className="font-display text-xl text-ink-900 mb-3">{item.title}</h4>
+                  <p className="text-ink-500 leading-relaxed">{item.description}</p>
                 </div>
               </FadeInSection>
             ))}
@@ -72,28 +63,25 @@ export default function ForInvestors() {
       </section>
 
       {/* Next Steps */}
-      <section className="bg-gray-50 py-24">
+      <section className="bg-ink-950 py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 sm:p-12 text-white">
-              <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-4">{lang === 'ru' ? 'Начало работы' : 'Getting Started'}</h3>
-              <h4 className="text-3xl font-bold mb-8">{lang === 'ru' ? 'Следующие шаги' : 'Next Steps'}</h4>
-              <div className="space-y-4 mb-10">
+            <Eyebrow index="03" invert className="mb-4">{lang === 'ru' ? 'Начало работы' : 'Getting Started'}</Eyebrow>
+            <h4 className="font-display text-3xl sm:text-4xl text-paper mb-12">{lang === 'ru' ? 'Следующие шаги' : 'Next Steps'}</h4>
+            <div className="relative pl-10 mb-14">
+              <div className="absolute left-[7px] top-2 bottom-2 w-px bg-paper/15" />
+              <div className="space-y-8">
                 {(lang === 'ru' ? nextStepsRu : nextSteps).map((step, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-tiffany/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-tiffany font-bold text-sm">{i + 1}</span>
+                  <div key={i} className="relative">
+                    <div className="absolute -left-10 top-0.5 w-4 h-4 rounded-full border border-tiffany flex items-center justify-center">
+                      <span className="w-1.5 h-1.5 rounded-full bg-tiffany" />
                     </div>
-                    <p className="text-gray-300 leading-relaxed">{step}</p>
+                    <p className="text-paper/70 leading-relaxed">{step}</p>
                   </div>
                 ))}
               </div>
-              <Link to="/Contact">
-                <Button size="lg" className="bg-tiffany hover:bg-tiffany-dark text-white rounded-full px-8">
-                  {lang === 'ru' ? 'Начать диалог' : 'Start the Conversation'} <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
             </div>
+            <Cta to="/Contact" variant="inverse">{lang === 'ru' ? 'Начать диалог' : 'Start the Conversation'}</Cta>
           </FadeInSection>
         </div>
       </section>

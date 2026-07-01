@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { useLanguage } from '@/lib/LanguageContext';
+import Cta from '@/components/shared/Cta';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,91 +22,106 @@ export default function Navbar() {
     { label: 'Fund', path: '/Fund' },
     { label: t('nav_strategy'), path: '/Strategy' },
     { label: t('nav_portfolio'), path: '/Portfolio' },
+    { label: t('nav_team'), path: '/Team' },
     { label: t('nav_insights'), path: '/MarketInsights' },
     { label: t('nav_investors'), path: '/ForInvestors' },
     { label: t('nav_contact'), path: '/Contact' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white/80 backdrop-blur-sm'}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-paper/95 backdrop-blur-md ${
+        scrolled ? 'border-b border-ink-900/10' : 'border-b border-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/Home" className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center justify-between h-16 lg:h-[4.5rem]">
+          <Link to="/Home" className="flex items-center gap-3 flex-shrink-0">
             <img
-              src="/images/logo3.png"
+              src="/images/logo.webp"
               alt="Simplex Capital - Tech Venture Capital & Strategic Technology Investments"
-              className="h-20 w-auto"
+              className="h-10 w-auto"
+              width="40"
+              height="40"
+              fetchpriority="high"
+              decoding="async"
             />
-            <div className="hidden sm:block">
-              <span className="text-lg font-bold text-gray-900 tracking-tight">Simplex Capital</span>
-            </div>
+            <span className="hidden sm:block font-display text-lg text-ink-900 tracking-tight">
+              Simplex Capital
+            </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-2.5 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
-                  location.pathname === link.path
-                    ? 'text-tiffany-700 bg-tiffany-50'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+            {navLinks.map((link) => {
+              const active = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.04em] transition-colors whitespace-nowrap ${
+                    active ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute left-0 -bottom-0.5 h-px bg-tiffany-700 transition-all duration-300 ${
+                      active ? 'w-full' : 'w-0'
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Link to="/Contact">
-              <Button className="bg-tiffany hover:bg-tiffany-dark text-white rounded-full px-5 text-sm">
-                {t('nav_inquire')}
-              </Button>
-            </Link>
+          <div className="hidden lg:flex items-center">
+            <Cta to="/Contact" variant="ghost" className="px-5 py-2.5 text-[12px] tracking-[0.04em]">
+              {t('nav_inquire')}
+            </Cta>
           </div>
 
           <div className="lg:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <button className="p-2 text-gray-600" aria-label="Toggle navigation menu">
-                  <Menu className="w-6 h-6" />
+                <button className="p-2 text-ink-900" aria-label="Toggle navigation menu">
+                  <Menu className="w-6 h-6" strokeWidth={1.5} />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 p-0">
+              <SheetContent side="right" className="w-80 p-0 bg-paper border-l border-ink-900/10">
+                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
                 <div className="flex flex-col h-full">
-                  <div className="p-6 border-b">
-                    <div className="flex items-center gap-2">
+                  <div className="p-6 border-b border-ink-900/10 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
                       <img
-                        src="/images/logo3.png"
+                        src="/images/logo.webp"
                         alt="Simplex Capital"
-                        className="h-16 w-auto"
+                        className="h-9 w-auto"
+                        width="36"
+                        height="36"
+                        decoding="async"
                       />
-                      <span className="text-lg font-bold text-gray-900">Simplex Capital</span>
+                      <span className="font-display text-lg text-ink-900">Simplex Capital</span>
                     </div>
                   </div>
-                  <div className="flex-1 py-4">
+                  <div className="flex-1 py-4 overflow-y-auto">
                     {navLinks.map((link) => (
                       <Link
                         key={link.path}
                         to={link.path}
                         onClick={() => setOpen(false)}
-                        className={`block px-6 py-3 text-base font-medium transition-colors ${
+                        className={`block px-6 py-3.5 text-sm font-medium uppercase tracking-[0.04em] transition-colors border-l-2 ${
                           location.pathname === link.path
-                            ? 'text-tiffany-700 bg-tiffany-50'
-                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                            ? 'text-ink-900 border-tiffany-700 bg-ink-900/[0.03]'
+                            : 'text-ink-500 border-transparent hover:text-ink-900 hover:bg-ink-900/[0.03]'
                         }`}
                       >
                         {link.label}
                       </Link>
                     ))}
                   </div>
-                  <div className="p-6 border-t">
-                    <Link to="/Contact" onClick={() => setOpen(false)}>
-                      <Button className="w-full bg-tiffany hover:bg-tiffany-dark text-white rounded-full">
-                        {t('nav_inquire_full')}
-                      </Button>
-                    </Link>
+                  <div className="p-6 border-t border-ink-900/10">
+                    <Cta to="/Contact" variant="primary" onClick={() => setOpen(false)} className="w-full justify-center">
+                      {t('nav_inquire_full')}
+                    </Cta>
                   </div>
                 </div>
               </SheetContent>

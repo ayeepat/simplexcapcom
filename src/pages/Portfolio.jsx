@@ -1,7 +1,7 @@
 import React from 'react';
 import FadeInSection from '@/components/shared/FadeInSection';
-import { Badge } from '@/components/ui/badge';
-import { Globe, Code, Rocket } from 'lucide-react';
+import SectionHeader from '@/components/shared/SectionHeader';
+import Eyebrow from '@/components/shared/Eyebrow';
 import { useLanguage } from '@/lib/LanguageContext';
 
 const portfolioCompaniesData = [
@@ -16,9 +16,9 @@ const portfolioCompaniesData = [
 ];
 
 const keyPatternsData = [
-  { icon: Globe, titleKey: 'portfolio_pattern1_title', descKey: 'portfolio_pattern1_desc' },
-  { icon: Code, titleKey: 'portfolio_pattern2_title', descKey: 'portfolio_pattern2_desc' },
-  { icon: Rocket, titleKey: 'portfolio_pattern3_title', descKey: 'portfolio_pattern3_desc' },
+  { titleKey: 'portfolio_pattern1_title', descKey: 'portfolio_pattern1_desc' },
+  { titleKey: 'portfolio_pattern2_title', descKey: 'portfolio_pattern2_desc' },
+  { titleKey: 'portfolio_pattern3_title', descKey: 'portfolio_pattern3_desc' },
 ];
 
 export default function Portfolio() {
@@ -29,37 +29,30 @@ export default function Portfolio() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/portfolio.jpg"
-            alt="Portfolio"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/75 to-gray-900/50" />
+      <section className="relative overflow-hidden min-h-hero-md flex items-center">
+        <div className="grain absolute inset-0 z-0">
+          <img src="/images/portfolio.webp" alt="Portfolio" className="w-full h-full object-cover animate-hero-zoom" fetchpriority="high" decoding="async" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/40" />
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center">
-          <span className="inline-block text-tiffany text-sm font-semibold uppercase tracking-widest mb-4 animate-fade-in-up">{t('portfolio_label')}</span>
-          <h1 className="animate-fade-in-up-delay-1 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">{t('portfolio_title')}</h1>
-          <p className="animate-fade-in-up-delay-2 text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">{t('portfolio_desc')}</p>
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center">
+          <div className="flex justify-center mb-6"><Eyebrow index="01" invert>{t('portfolio_label')}</Eyebrow></div>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-paper leading-[1.08] mb-6">{t('portfolio_title')}</h1>
+          <p className="text-lg sm:text-xl text-paper/60 leading-relaxed max-w-2xl mx-auto">{t('portfolio_desc')}</p>
         </div>
       </section>
 
       {/* Portfolio Grid */}
-      <section className="bg-white py-24">
+      <section className="bg-paper py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <SectionHeader index="02" label="Selected Investments" title="Companies we've backed" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-ink-900/10">
             {portfolioCompanies.map((company, i) => (
-              <FadeInSection key={company.name} delay={i * 60}>
-                <div className="group bg-gray-50 rounded-2xl p-6 h-full hover:bg-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
-                  <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-tiffany-50 flex items-center justify-center mb-4 shadow-sm transition-colors">
-                    <span className="text-lg font-bold text-tiffany-700">{company.name[0]}</span>
-                  </div>
-                  <h4 className="font-bold text-gray-900 mb-1">{company.name}</h4>
-                  <Badge variant="secondary" className="mb-3 bg-tiffany-50 text-tiffany-700 border-0 text-xs">
-                    {company.category}
-                  </Badge>
-                  <p className="text-sm text-gray-500 leading-relaxed">{company.detail}</p>
+              <FadeInSection key={company.name} delay={i * 60} className="border-r border-b border-ink-900/10 group hover:bg-ink-900 transition-colors duration-300">
+                <div className="p-7 h-full flex flex-col">
+                  <div className="font-display text-3xl text-ink-900 group-hover:text-paper mb-6 transition-colors">{company.name[0]}</div>
+                  <h4 className="font-display text-lg text-ink-900 group-hover:text-paper mb-1.5 leading-snug transition-colors">{company.name}</h4>
+                  <div className="font-mono text-[10px] text-tiffany-700 group-hover:text-tiffany uppercase tracking-[0.14em] mb-4 transition-colors">{company.category}</div>
+                  <p className="text-sm text-ink-500 group-hover:text-paper/60 leading-relaxed transition-colors">{company.detail}</p>
                 </div>
               </FadeInSection>
             ))}
@@ -68,20 +61,20 @@ export default function Portfolio() {
       </section>
 
       {/* Key Patterns */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
-            <h3 className="text-sm font-semibold text-tiffany uppercase tracking-widest mb-12 text-center">{t('portfolio_patterns_label')}</h3>
-          </FadeInSection>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="bg-paper-dim py-28 border-t border-ink-900/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader align="center" index="03" label={t('portfolio_patterns_label')} title="What we keep seeing" />
+          <div className="border-t border-ink-900/10">
             {keyPatterns.map((pattern, i) => (
               <FadeInSection key={pattern.title} delay={i * 100}>
-                <div className="bg-white rounded-2xl p-8 text-center h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-tiffany-50 flex items-center justify-center mx-auto mb-5">
-                    <pattern.icon className="w-7 h-7 text-tiffany-700" />
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-8 py-9 border-b border-ink-900/10">
+                  <div className="sm:col-span-1 font-mono text-xs text-tiffany-700">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="sm:col-span-4">
+                    <h4 className="font-display text-xl text-ink-900 leading-snug">{pattern.title}</h4>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3">{pattern.title}</h4>
-                  <p className="text-gray-500 leading-relaxed">{pattern.description}</p>
+                  <div className="sm:col-span-7">
+                    <p className="text-ink-500 leading-relaxed">{pattern.description}</p>
+                  </div>
                 </div>
               </FadeInSection>
             ))}

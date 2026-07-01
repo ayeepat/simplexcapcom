@@ -9,6 +9,7 @@ export default function Footer() {
     [lang === 'ru' ? 'Компания' : 'Company']: [
       { label: t('nav_strategy'), path: '/Strategy' },
       { label: t('nav_portfolio'), path: '/Portfolio' },
+      { label: t('nav_team'), path: '/Team' },
     ],
     [t('footer_investors')]: [
       { label: t('nav_insights'), path: '/MarketInsights' },
@@ -17,55 +18,71 @@ export default function Footer() {
     ],
   };
 
+  const office = { city: lang === 'ru' ? 'Москва' : 'Abu Dhabi', country: lang === 'ru' ? 'Россия' : 'UAE' };
+
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="bg-gray-800 border-b border-gray-700">
+    <footer className="bg-ink-950 text-paper">
+      <div className="border-b border-paper/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <p className="text-xs text-gray-400 leading-relaxed">
-            <span className="text-tiffany font-semibold">{lang === 'ru' ? 'Важный дисклеймер:' : 'Important Disclaimer:'}</span> {t('footer_disclaimer')}
+          <p className="font-mono text-[11px] text-paper/50 leading-relaxed tracking-wide">
+            <span className="text-tiffany">{lang === 'ru' ? 'ВАЖНЫЙ ДИСКЛЕЙМЕР — ' : 'IMPORTANT DISCLOSURE — '}</span>
+            {t('footer_disclaimer')}
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src="/images/logo3.png"
-                alt="Simplex Capital"
-                className="h-20 w-auto"
-              />
-              <span className="text-lg font-bold tracking-tight">Simplex Capital</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3 mb-6">
+              <img src="/images/logo.webp" alt="Simplex Capital" className="h-9 w-auto" width="36" height="36" loading="lazy" decoding="async" />
+              <span className="font-display text-2xl tracking-tight">Simplex Capital</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-md mb-6">
+            <p className="text-paper/50 leading-relaxed max-w-sm mb-8">
               {lang === 'ru'
                 ? 'Содействуем технологическому развитию и экономической диверсификации через стратегические инвестиции в быстрорастущие технологические компании.'
                 : 'Driving technological development, competitiveness, and economic diversification through strategic investments in high-growth tech companies.'}
             </p>
+            <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-paper/40">
+              <span className="text-paper/70">{office.city}</span> · {office.country}
+            </div>
           </div>
 
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="text-sm font-semibold text-tiffany uppercase tracking-wider mb-4">{title}</h4>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.path}>
-                    <Link to={link.path} className="text-gray-400 hover:text-white text-sm transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title}>
+                <h4 className="font-mono text-[11px] font-medium text-tiffany uppercase tracking-[0.16em] mb-5">{title}</h4>
+                <ul className="space-y-3.5">
+                  {links.map((link) => (
+                    <li key={link.path}>
+                      <Link to={link.path} className="text-paper/60 hover:text-paper text-sm transition-colors">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <div>
+              <h4 className="font-mono text-[11px] font-medium text-tiffany uppercase tracking-[0.16em] mb-5">
+                {lang === 'ru' ? 'Контакт' : 'Contact'}
+              </h4>
+              <ul className="space-y-3.5 text-sm text-paper/60">
+                <li>ir@simplex-cap.com</li>
               </ul>
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xs">© 2026 Simplex Capital. {t('footer_rights')}</p>
+        <div className="mt-16 pt-8 border-t border-paper/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="font-mono text-[11px] text-paper/40 tracking-wide">© 2026 SIMPLEX CAPITAL. {t('footer_rights').toUpperCase()}</p>
           <div className="flex gap-6">
-            <Link to="/Contact" className="text-gray-500 hover:text-gray-300 text-xs transition-colors">{lang === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}</Link>
-            <Link to="/Contact" className="text-gray-500 hover:text-gray-300 text-xs transition-colors">{lang === 'ru' ? 'Условия использования' : 'Terms of Use'}</Link>
+            <Link to="/Contact" className="font-mono text-[11px] text-paper/40 hover:text-paper/70 tracking-wide transition-colors">
+              {lang === 'ru' ? 'КОНФИДЕНЦИАЛЬНОСТЬ' : 'PRIVACY POLICY'}
+            </Link>
+            <Link to="/Contact" className="font-mono text-[11px] text-paper/40 hover:text-paper/70 tracking-wide transition-colors">
+              {lang === 'ru' ? 'УСЛОВИЯ' : 'TERMS OF USE'}
+            </Link>
           </div>
         </div>
       </div>

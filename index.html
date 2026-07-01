@@ -35,8 +35,20 @@
     <title>Simplex Capital | Tech Venture Capital & Strategic Technology Investments</title>
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/simplexfavicon.png" />
-    <link rel="apple-touch-icon" href="/simplexfavicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/webp" sizes="192x192" href="/favicon-192.webp" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preload LCP hero image for faster first paint -->
+    <link rel="preload" as="image" href="/images/home.webp" fetchpriority="high" />
+
+    <!-- Type system: Fraunces (display serif) / Inter (body, nav, labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- JSON-LD: Organization (Tech Venture Capital Fund) -->
     <script type="application/ld+json">
@@ -121,7 +133,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

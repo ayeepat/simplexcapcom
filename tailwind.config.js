@@ -4,6 +4,14 @@ module.exports = {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+  			display: ['Fraunces', 'ui-serif', 'serif'],
+  			// Used for the small tracked-out labels (nav, eyebrows, stat captions).
+  			// Kept as its own token — despite the name — so that role can be retuned
+  			// independently of body copy; currently mapped to Inter, not a monospace face.
+  			mono: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -22,6 +30,25 @@ module.exports = {
   				500: '#5AADA8',
   				600: '#4A9490',
   				700: '#3B7A77',
+  				900: '#17302D',
+  			},
+  			paper: {
+  				DEFAULT: '#FAF8F3',
+  				dim: '#F2EEE4',
+  			},
+  			ink: {
+  				DEFAULT: '#14181B',
+  				50: '#F3F1EC',
+  				100: '#E5E3DC',
+  				200: '#CBCBC4',
+  				300: '#A3A39C',
+  				400: '#7C7C76',
+  				500: '#5F6360',
+  				600: '#454A48',
+  				700: '#2B3134',
+  				800: '#1C2124',
+  				900: '#14181B',
+  				950: '#0D1012',
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
