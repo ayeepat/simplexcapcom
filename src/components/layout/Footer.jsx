@@ -37,7 +37,7 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-6">
               <img src="/images/logo.webp" alt="Simplex Capital" className="h-9 w-auto" width="36" height="36" loading="lazy" decoding="async" />
-              <span className="font-display text-2xl tracking-tight">Simplex Capital</span>
+              <span className="font-display text-2xl tracking-tight leading-none">Simplex Capital</span>
             </div>
             <p className="text-paper/50 leading-relaxed max-w-sm mb-8">
               {lang === 'ru'

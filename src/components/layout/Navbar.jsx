@@ -47,7 +47,7 @@ export default function Navbar() {
               fetchpriority="high"
               decoding="async"
             />
-            <span className="hidden sm:block font-display text-lg text-ink-900 tracking-tight">
+            <span className="hidden sm:block font-display text-lg text-ink-900 tracking-tight leading-none">
               Simplex Capital
             </span>
           </Link>
@@ -103,12 +103,12 @@ export default function Navbar() {
                       <img
                         src="/images/logo.webp"
                         alt="Simplex Capital"
-                        className="h-9 w-auto"
-                        width="36"
-                        height="36"
+                        className="h-10 w-auto"
+                        width="40"
+                        height="40"
                         decoding="async"
                       />
-                      <span className="font-display text-lg text-ink-900">Simplex Capital</span>
+                      <span className="font-display text-lg text-ink-900 leading-none">Simplex Capital</span>
                     </div>
                   </div>
                   <div className="flex-1 py-4 overflow-y-auto">
