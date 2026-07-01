@@ -36,14 +36,14 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-[4.5rem]">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           <Link to="/Home" className="flex items-center gap-3 flex-shrink-0">
             <img
-              src="/images/logo.webp"
+              src="/images/logo-mark.webp"
               alt="Simplex Capital - Tech Venture Capital & Strategic Technology Investments"
-              className="h-10 w-auto"
-              width="40"
-              height="40"
+              className="h-14 w-auto"
+              width="62"
+              height="56"
               fetchpriority="high"
               decoding="async"
             />
@@ -101,11 +101,11 @@ export default function Navbar() {
                   <div className="p-6 border-b border-ink-900/10 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <img
-                        src="/images/logo.webp"
+                        src="/images/logo-mark.webp"
                         alt="Simplex Capital"
-                        className="h-10 w-auto"
-                        width="40"
-                        height="40"
+                        className="h-12 w-auto"
+                        width="54"
+                        height="48"
                         decoding="async"
                       />
                       <span className="font-display text-lg text-ink-900 leading-none">Simplex Capital</span>

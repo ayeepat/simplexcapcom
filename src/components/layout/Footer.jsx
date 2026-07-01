@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-6">
-              <img src="/images/logo.webp" alt="Simplex Capital" className="h-9 w-auto" width="36" height="36" loading="lazy" decoding="async" />
+              <img src="/images/logo-mark.webp" alt="Simplex Capital" className="h-14 w-auto" width="62" height="56" loading="lazy" decoding="async" />
               <span className="font-display text-2xl tracking-tight leading-none">Simplex Capital</span>
             </div>
             <p className="text-paper/50 leading-relaxed max-w-sm mb-8">
