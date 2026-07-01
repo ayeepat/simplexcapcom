@@ -62,7 +62,7 @@ export default function Navbar() {
                   onMouseEnter={() => prefetchRoute(link.path)}
                   onTouchStart={() => prefetchRoute(link.path)}
                   onFocus={() => prefetchRoute(link.path)}
-                  className={`relative py-2 font-display text-[13px] font-medium uppercase tracking-[0.04em] transition-colors whitespace-nowrap ${
+                  className={`relative py-2 font-sans text-[13px] font-medium uppercase tracking-[0.08em] transition-colors whitespace-nowrap ${
                     active ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'
                   }`}
                 >
@@ -82,7 +82,7 @@ export default function Navbar() {
               to="/Contact"
               variant="ghost"
               onMouseEnter={() => prefetchRoute('/Contact')}
-              className="font-display px-5 py-2.5 text-[12px] tracking-[0.04em]"
+              className="font-sans px-5 py-2.5 text-[12px] tracking-[0.08em]"
             >
               {t('nav_inquire')}
             </Cta>
@@ -118,7 +118,7 @@ export default function Navbar() {
                         to={link.path}
                         onClick={() => setOpen(false)}
                         onTouchStart={() => prefetchRoute(link.path)}
-                        className={`block px-6 py-3.5 font-display text-sm font-medium uppercase tracking-[0.04em] transition-colors border-l-2 ${
+                        className={`block px-6 py-3.5 font-sans text-sm font-medium uppercase tracking-[0.08em] transition-colors border-l-2 ${
                           location.pathname === link.path
                             ? 'text-ink-900 border-tiffany-700 bg-ink-900/[0.03]'
                             : 'text-ink-500 border-transparent hover:text-ink-900 hover:bg-ink-900/[0.03]'
@@ -134,7 +134,7 @@ export default function Navbar() {
                       variant="primary"
                       onClick={() => setOpen(false)}
                       onTouchStart={() => prefetchRoute('/Contact')}
-                      className="font-display w-full justify-center"
+                      className="font-sans w-full justify-center"
                     >
                       {t('nav_inquire_full')}
                     </Cta>
