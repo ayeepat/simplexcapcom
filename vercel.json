@@ -1,7 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "regions": ["iad1", "sfo1", "fra1", "sin1"],
   "headers": [
     {
       "source": "/(.*)",
