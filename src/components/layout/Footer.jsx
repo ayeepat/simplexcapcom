@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/lib/LanguageContext';
+import { prefetchRoute } from '@/lib/prefetch';
 
 export default function Footer() {
   const { t, lang } = useLanguage();
@@ -55,7 +56,12 @@ export default function Footer() {
                 <ul className="space-y-3.5">
                   {links.map((link) => (
                     <li key={link.path}>
-                      <Link to={link.path} className="text-paper/60 hover:text-paper text-sm transition-colors">
+                      <Link
+                        to={link.path}
+                        onMouseEnter={() => prefetchRoute(link.path)}
+                        onTouchStart={() => prefetchRoute(link.path)}
+                        className="text-paper/60 hover:text-paper text-sm transition-colors"
+                      >
                         {link.label}
                       </Link>
                     </li>

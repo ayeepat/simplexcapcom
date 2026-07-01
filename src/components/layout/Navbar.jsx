@@ -4,6 +4,7 @@ import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { useLanguage } from '@/lib/LanguageContext';
 import Cta from '@/components/shared/Cta';
+import { prefetchRoute } from '@/lib/prefetch';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -58,6 +59,9 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path}
+                  onMouseEnter={() => prefetchRoute(link.path)}
+                  onTouchStart={() => prefetchRoute(link.path)}
+                  onFocus={() => prefetchRoute(link.path)}
                   className={`relative py-2 font-display text-[13px] font-medium uppercase tracking-[0.04em] transition-colors whitespace-nowrap ${
                     active ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'
                   }`}
@@ -74,7 +78,12 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center">
-            <Cta to="/Contact" variant="ghost" className="font-display px-5 py-2.5 text-[12px] tracking-[0.04em]">
+            <Cta
+              to="/Contact"
+              variant="ghost"
+              onMouseEnter={() => prefetchRoute('/Contact')}
+              className="font-display px-5 py-2.5 text-[12px] tracking-[0.04em]"
+            >
               {t('nav_inquire')}
             </Cta>
           </div>
@@ -108,6 +117,7 @@ export default function Navbar() {
                         key={link.path}
                         to={link.path}
                         onClick={() => setOpen(false)}
+                        onTouchStart={() => prefetchRoute(link.path)}
                         className={`block px-6 py-3.5 font-display text-sm font-medium uppercase tracking-[0.04em] transition-colors border-l-2 ${
                           location.pathname === link.path
                             ? 'text-ink-900 border-tiffany-700 bg-ink-900/[0.03]'
@@ -119,7 +129,13 @@ export default function Navbar() {
                     ))}
                   </div>
                   <div className="p-6 border-t border-ink-900/10">
-                    <Cta to="/Contact" variant="primary" onClick={() => setOpen(false)} className="font-display w-full justify-center">
+                    <Cta
+                      to="/Contact"
+                      variant="primary"
+                      onClick={() => setOpen(false)}
+                      onTouchStart={() => prefetchRoute('/Contact')}
+                      className="font-display w-full justify-center"
+                    >
                       {t('nav_inquire_full')}
                     </Cta>
                   </div>

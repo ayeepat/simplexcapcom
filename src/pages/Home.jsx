@@ -5,6 +5,7 @@ import FadeInSection from '@/components/shared/FadeInSection';
 import Eyebrow from '@/components/shared/Eyebrow';
 import Cta from '@/components/shared/Cta';
 import { useLanguage } from '@/lib/LanguageContext';
+import { prefetchRoute } from '@/lib/prefetch';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -56,7 +57,7 @@ export default function Home() {
               {t('home_hero_desc')}
             </p>
             <div className="animate-fade-in-up-delay-3 flex flex-wrap gap-4">
-              <Cta to="/Strategy" variant="inverse">{t('home_explore_strategy')}</Cta>
+              <Cta to="/Strategy" variant="inverse" onMouseEnter={() => prefetchRoute('/Strategy')}>{t('home_explore_strategy')}</Cta>
             </div>
           </div>
         </div>
@@ -81,7 +82,12 @@ export default function Home() {
           <div className="border-t border-ink-900/10">
             {teaserCards.map((card, i) => (
               <FadeInSection key={card.title} delay={i * 100}>
-                <Link to={card.link} className="group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 items-center py-10 border-b border-ink-900/10 transition-opacity active:opacity-60">
+                <Link
+                  to={card.link}
+                  onMouseEnter={() => prefetchRoute(card.link)}
+                  onTouchStart={() => prefetchRoute(card.link)}
+                  className="group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 items-center py-10 border-b border-ink-900/10 transition-opacity active:opacity-60"
+                >
                   <div className="sm:col-span-1">
                     <span className="font-mono text-sm text-tiffany-700">{card.index}</span>
                   </div>
