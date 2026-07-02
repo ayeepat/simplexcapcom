@@ -5,20 +5,21 @@ import Eyebrow from '@/components/shared/Eyebrow';
 import { useLanguage } from '@/lib/LanguageContext';
 
 const ipoData = [
-  { year: '2019', total: 159, pct: 17 },
-  { year: '2020', total: 218, pct: 23 },
-  { year: '2021', total: 961, pct: 100 },
-  { year: '2022', total: 89, pct: 9 },
-  { year: '2023', total: 154, pct: 16 },
-  { year: '2024', total: 225, pct: 23 },
-  { year: '2025', total: 347, pct: 36 },
+  { year: '2019', total: 232, pct: 22 },
+  { year: '2020', total: 480, pct: 46 },
+  { year: '2021', total: 1035, pct: 100 },
+  { year: '2022', total: 181, pct: 17 },
+  { year: '2023', total: 154, pct: 15 },
+  { year: '2024', total: 225, pct: 22 },
+  { year: '2025', total: 347, pct: 34 },
+  { year: '2026*', total: 190, pct: 18, current: true },
 ];
 
 const assetReturns = [
-  { labelKey: 'insights_tech_avg', value: 85, highlight: true },
-  { labelKey: 'insights_sp500_avg', value: 48 },
-  { labelKey: 'insights_realestate_avg', value: 28 },
-  { labelKey: 'insights_bonds_avg', value: 12 },
+  { labelKey: 'insights_tech_avg', value: 504, pct: 100, highlight: true },
+  { labelKey: 'insights_sp500_avg', value: 298, pct: 59 },
+  { labelKey: 'insights_realestate_avg', value: 75, pct: 15 },
+  { labelKey: 'insights_bonds_avg', value: 22, pct: 4 },
 ];
 
 const sectorAllocation = [
@@ -53,7 +54,7 @@ export default function MarketInsights() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <FadeInSection>
               <Eyebrow index="02" className="mb-3">{t('insights_us_ipo')}</Eyebrow>
-              <h4 className="font-display text-2xl text-ink-900 mb-2">{t('insights_ipo_2025')}</h4>
+              <h4 className="font-display text-2xl text-ink-900 mb-2">{t('insights_ipo_headline')}</h4>
               <p className="text-ink-500 mb-10 leading-relaxed">{t('insights_ipo_desc')}</p>
               <div className="space-y-4">
                 {ipoData.map((item) => (
@@ -61,7 +62,7 @@ export default function MarketInsights() {
                     <span className="font-mono text-xs text-ink-500 w-10">{item.year}</span>
                     <div className="flex-1 bg-ink-900/5 h-8 relative overflow-hidden">
                       <div
-                        className={`h-full flex items-center justify-end pr-3 transition-all duration-700 ${item.year === '2025' ? 'bg-tiffany-700' : 'bg-ink-900/70'}`}
+                        className={`h-full flex items-center justify-end pr-3 transition-all duration-700 ${item.current ? 'bg-tiffany-700' : 'bg-ink-900/70'}`}
                         style={{ width: `${item.pct}%` }}
                       >
                         <span className="font-mono text-[11px] font-medium text-paper whitespace-nowrap">{item.total}</span>
@@ -70,7 +71,7 @@ export default function MarketInsights() {
                   </div>
                 ))}
               </div>
-              <p className="font-mono text-[11px] text-ink-400 mt-6 uppercase tracking-wide">Source: PitchBook, 2025</p>
+              <p className="font-mono text-[11px] text-ink-400 mt-6 uppercase tracking-wide">Source: StockAnalysis.com, July 2026 · *2026 = H1 (Jan–Jun)</p>
             </FadeInSection>
 
             <FadeInSection delay={100}>
@@ -82,15 +83,15 @@ export default function MarketInsights() {
                   <div key={item.labelKey}>
                     <div className="flex justify-between mb-2">
                       <span className="text-sm text-ink-700">{t(item.labelKey)}</span>
-                      <span className={`font-mono text-sm ${item.highlight ? 'text-tiffany-700' : 'text-ink-500'}`}>{item.value}%</span>
+                      <span className={`font-mono text-sm ${item.highlight ? 'text-tiffany-700' : 'text-ink-500'}`}>+{item.value}%</span>
                     </div>
                     <div className="bg-ink-900/5 h-2">
-                      <div className={`h-full ${item.highlight ? 'bg-tiffany-700' : 'bg-ink-900/40'}`} style={{ width: `${item.value}%` }} />
+                      <div className={`h-full ${item.highlight ? 'bg-tiffany-700' : 'bg-ink-900/40'}`} style={{ width: `${item.pct}%` }} />
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="font-mono text-[11px] text-ink-400 mt-6 uppercase tracking-wide">Source: PitchBook, Bloomberg</p>
+              <p className="font-mono text-[11px] text-ink-400 mt-6 uppercase tracking-wide">Source: Nasdaq, S&P DJI, Nareit, Bloomberg · Total return, 2016–2025</p>
             </FadeInSection>
           </div>
         </div>
@@ -128,6 +129,9 @@ export default function MarketInsights() {
             </h3>
             <p className="text-ink-500 text-lg leading-relaxed mb-6">
               {t('insights_quote_desc')}
+            </p>
+            <p className="text-ink-400 text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
+              {t('insights_risk_note')}
             </p>
             <p className="font-mono text-[11px] text-ink-400 uppercase tracking-wide">{t('insights_source')}</p>
           </FadeInSection>
