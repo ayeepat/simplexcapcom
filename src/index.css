@@ -164,3 +164,176 @@ html {
     transform: none;
   }
 }
+/* ------------------------------------------------------------------
+   Small details: hover, press and background shapes
+   ------------------------------------------------------------------ */
+
+/* Grid cell: a teal hairline draws across the top and the cell warms slightly. */
+.card-hover {
+  position: relative;
+  transition: background-color 0.4s ease;
+}
+.card-hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: #3B7A77;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) {
+.card-hover:hover {
+  background-color: rgba(20, 24, 27, 0.025);
+}
+}
+@media (hover: hover) {
+.card-hover:hover::before {
+  transform: scaleX(1);
+}
+}
+
+/* Press feedback for clickable rows and tiles. */
+.press {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.press:active {
+  transform: scale(0.992);
+}
+
+/* Background wireframe shapes drift a few pixels up and down. */
+@keyframes shapeBob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+.shape-bob {
+  animation: shapeBob 10s ease-in-out infinite;
+}
+
+/* Keyboard focus: visible on both paper and ink backgrounds. */
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible {
+  outline: 1.5px solid #5AADA8;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape-bob { animation: none; }
+  .card-hover::before { transition: none; }
+}
+
+/* ------------------------------------------------------------------
+   Tilt cards, click ripples, small hover helpers
+   ------------------------------------------------------------------ */
+.tilt-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+@media (hover: hover) {
+.tilt-card:hover {
+  transition: transform 0.12s linear, background-color 0.4s ease, box-shadow 0.5s ease;
+  box-shadow: 0 18px 40px -24px rgba(13, 16, 18, 0.35);
+  z-index: 2;
+}
+}
+/* The light that follows the cursor. */
+.tilt-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(260px circle at var(--mx) var(--my), rgba(129, 216, 208, 0.16), transparent 70%);
+}
+.tilt-card--ink::after {
+  background: radial-gradient(260px circle at var(--mx) var(--my), rgba(129, 216, 208, 0.12), transparent 70%);
+}
+@media (hover: hover) {
+.tilt-card:hover::after {
+  opacity: 1;
+}
+}
+/* Content inside a tilt card floats slightly above its surface. */
+.tilt-lift {
+  transform: translateZ(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) {
+.tilt-card:hover .tilt-lift {
+  transform: translateZ(18px);
+}
+}
+
+/* Click ripple for buttons. */
+.cta-ripple {
+  position: absolute;
+  z-index: -1;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 9999px;
+  pointer-events: none;
+  border: 1px solid currentColor;
+  animation: ctaRipple 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes ctaRipple {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(26); opacity: 0; }
+}
+
+/* A list whose rows dim their siblings while one is hovered. */
+@media (hover: hover) {
+  .focus-list:hover > * {
+    opacity: 0.45;
+    transition: opacity 0.35s ease;
+  }
+  .focus-list > * {
+    transition: opacity 0.35s ease;
+  }
+  .focus-list > *:hover {
+    opacity: 1;
+  }
+}
+
+/* Hero shapes fade in once the headline has landed. */
+/* Uses the standalone `scale` property so it never fights a Tailwind translate on the same element. */
+@keyframes shapeIn {
+  from { opacity: 0; scale: 0.92; }
+  to { opacity: 1; scale: 1; }
+}
+.shape-in {
+  opacity: 0;
+  animation: shapeIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card, .tilt-card:hover { transform: none; transition: background-color 0.4s ease; }
+  .tilt-card:hover .tilt-lift { transform: none; }
+  .cta-ripple { display: none; }
+  .shape-in { animation: none; opacity: 1; }
+}
+
+/* Marching dashes along a vertical line: the next-steps track. */
+.flow-line {
+  background-image: linear-gradient(to bottom, currentColor 50%, transparent 50%);
+  background-size: 1px 8px;
+  animation: flowLine 1.2s linear infinite;
+}
+@keyframes flowLine {
+  to { background-position: 0 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-line { animation: none; }
+}

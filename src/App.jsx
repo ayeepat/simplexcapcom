@@ -14,6 +14,8 @@ const Team = lazy(() => import('./pages/Team'));
 const MarketInsights = lazy(() => import('./pages/MarketInsights'));
 const ForInvestors = lazy(() => import('./pages/ForInvestors'));
 const Contact = lazy(() => import('./pages/Contact'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 
 function PageFallback() {
   return (
@@ -39,6 +41,8 @@ function App() {
               <Route path="/MarketInsights" element={<MarketInsights />} />
               <Route path="/ForInvestors" element={<ForInvestors />} />
               <Route path="/Contact" element={<Contact />} />
+              <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+              <Route path="/TermsOfUse" element={<TermsOfUse />} />
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>

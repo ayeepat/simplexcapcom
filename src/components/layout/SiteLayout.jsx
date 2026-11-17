@@ -14,7 +14,7 @@ export default function SiteLayout() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 pt-16 lg:pt-[4.5rem]">
+      <main className="flex-1 pt-20 lg:pt-24">
         <div key={pathname} className="animate-page-enter">
           <Outlet />
         </div>

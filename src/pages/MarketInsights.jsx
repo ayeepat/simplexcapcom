@@ -1,7 +1,8 @@
 import React from 'react';
 import FadeInSection from '@/components/shared/FadeInSection';
 import SectionHeader from '@/components/shared/SectionHeader';
-import Eyebrow from '@/components/shared/Eyebrow';
+import GrowBar from '@/components/shared/GrowBar';
+import Shape3D from '@/components/shared/Shape3D';
 import { useLanguage } from '@/lib/LanguageContext';
 
 const ipoData = [
@@ -41,32 +42,31 @@ export default function MarketInsights() {
           <img src="/images/marketinsights.webp" alt="Market Insights" className="w-full h-full object-cover animate-hero-zoom" fetchpriority="high" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/40" />
         </div>
-        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center">
-          <div className="flex justify-center mb-6"><Eyebrow index="01" invert>{t('insights_label')}</Eyebrow></div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-paper leading-[1.08] mb-6">{t('insights_title')}</h1>
-          <p className="text-lg sm:text-xl text-paper/60 leading-relaxed max-w-2xl mx-auto">{t('insights_desc')}</p>
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
+          <h1 className="animate-fade-in-up-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-paper leading-[1.08] mb-6">{t('insights_title')}</h1>
+          <p className="animate-fade-in-up-delay-2 text-lg sm:text-xl text-paper/60 leading-relaxed max-w-2xl mx-auto">{t('insights_desc')}</p>
         </div>
       </section>
 
       {/* IPO Chart */}
-      <section className="bg-paper py-28">
+      <section className="bg-paper py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <FadeInSection>
-              <Eyebrow index="02" className="mb-3">{t('insights_us_ipo')}</Eyebrow>
               <h4 className="font-display text-2xl text-ink-900 mb-2">{t('insights_ipo_headline')}</h4>
               <p className="text-ink-500 mb-10 leading-relaxed">{t('insights_ipo_desc')}</p>
-              <div className="space-y-4">
-                {ipoData.map((item) => (
-                  <div key={item.year} className="flex items-center gap-4">
-                    <span className="font-mono text-xs text-ink-500 w-10">{item.year}</span>
+              <div className="focus-list space-y-4">
+                {ipoData.map((item, i) => (
+                  <div key={item.year} className="group flex items-center gap-4">
+                    <span className="font-mono text-xs text-ink-500 w-10 transition-colors duration-300 group-hover:text-ink-900">{item.year}</span>
                     <div className="flex-1 bg-ink-900/5 h-8 relative overflow-hidden">
-                      <div
-                        className={`h-full flex items-center justify-end pr-3 transition-all duration-700 ${item.current ? 'bg-tiffany-700' : 'bg-ink-900/70'}`}
-                        style={{ width: `${item.pct}%` }}
+                      <GrowBar
+                        pct={item.pct}
+                        delay={i * 70}
+                        className={`h-full flex items-center justify-end pr-3 transition-colors duration-300 ${item.current ? 'bg-tiffany-700' : 'bg-ink-900/70 group-hover:bg-ink-900'}`}
                       >
                         <span className="font-mono text-[11px] font-medium text-paper whitespace-nowrap">{item.total}</span>
-                      </div>
+                      </GrowBar>
                     </div>
                   </div>
                 ))}
@@ -75,18 +75,17 @@ export default function MarketInsights() {
             </FadeInSection>
 
             <FadeInSection delay={100}>
-              <Eyebrow index="03" className="mb-3">{t('insights_asset_returns')}</Eyebrow>
               <h4 className="font-display text-2xl text-ink-900 mb-2">{t('insights_asset_title')}</h4>
               <p className="text-ink-500 mb-10 leading-relaxed">{t('insights_asset_subtitle')}</p>
-              <div className="space-y-6">
-                {assetReturns.map((item) => (
-                  <div key={item.labelKey}>
+              <div className="focus-list space-y-6">
+                {assetReturns.map((item, i) => (
+                  <div key={item.labelKey} className="group">
                     <div className="flex justify-between mb-2">
                       <span className="text-sm text-ink-700">{t(item.labelKey)}</span>
-                      <span className={`font-mono text-sm ${item.highlight ? 'text-tiffany-700' : 'text-ink-500'}`}>+{item.value}%</span>
+                      <span className={`font-mono text-sm transition-transform duration-300 group-hover:-translate-y-0.5 ${item.highlight ? 'text-tiffany-700' : 'text-ink-500 group-hover:text-ink-900'}`}>+{item.value}%</span>
                     </div>
-                    <div className="bg-ink-900/5 h-2">
-                      <div className={`h-full ${item.highlight ? 'bg-tiffany-700' : 'bg-ink-900/40'}`} style={{ width: `${item.pct}%` }} />
+                    <div className="bg-ink-900/5 h-2 transition-[height] duration-300 group-hover:h-3">
+                      <GrowBar pct={item.pct} delay={i * 110} className={`h-full ${item.highlight ? 'bg-tiffany-700' : 'bg-ink-900/40'}`} />
                     </div>
                   </div>
                 ))}
@@ -98,19 +97,22 @@ export default function MarketInsights() {
       </section>
 
       {/* Sector Allocation */}
-      <section className="bg-ink-950 py-28">
+      <section className="relative isolate overflow-hidden bg-ink-950 py-20 sm:py-28">
+        {/* The target allocation below, as a disc cut into its six slices. */}
+        <Shape3D shape="allocationDisc" size={240} speed={0.1} seed={0.7} tilt={0.85} className="absolute -z-10 hidden lg:block right-[3%] top-14 text-tiffany/40" />
+        <Shape3D shape="sonar" size={180} seed={2.4} speed={0.1} tilt={0.9} className="absolute -z-10 hidden lg:block left-[4%] bottom-14 text-paper/25" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader align="center" invert index="04" label={t('insights_allocation')} title={t('insights_allocation_title')} />
-          <div className="border-t border-paper/10">
+          <SectionHeader align="center" invert title={t('insights_allocation_title')} />
+          <div className="focus-list border-t border-paper/10">
             {sectorAllocation.map((sector, i) => (
               <FadeInSection key={sector.nameKey} delay={i * 60}>
-                <div className="py-5 border-b border-paper/10">
+                <div className="group py-5 border-b border-paper/10">
                   <div className="flex items-center justify-between gap-4 mb-2.5">
-                    <span className="text-paper/80">{t(sector.nameKey)}</span>
+                    <span className="text-paper/80 transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-paper">{t(sector.nameKey)}</span>
                     <span className="font-mono text-sm text-tiffany flex-shrink-0">{sector.value}%</span>
                   </div>
-                  <div className="bg-paper/10 h-1.5">
-                    <div className="h-full bg-tiffany" style={{ width: `${sector.value * 4}%` }} />
+                  <div className="bg-paper/10 h-1.5 transition-[height] duration-300 group-hover:h-2.5">
+                    <GrowBar pct={sector.value * 4} className="h-full bg-tiffany" />
                   </div>
                 </div>
               </FadeInSection>
@@ -120,10 +122,11 @@ export default function MarketInsights() {
       </section>
 
       {/* Key Insight */}
-      <section className="bg-paper py-28">
+      <section className="relative isolate overflow-hidden bg-paper py-20 sm:py-28">
+        <Shape3D shape="ipoBars" size={200} speed={0.07} seed={1.6} tilt={0.3} className="absolute -z-10 hidden xl:block left-[5%] top-1/2 -translate-y-1/2 text-ink-900/20" />
+        <Shape3D shape="candles" size={190} speed={0.1} seed={3.1} tilt={0.2} className="absolute -z-10 hidden xl:block right-[5%] top-1/2 -translate-y-1/2 text-tiffany-700/45" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeInSection>
-            <Eyebrow index="05" className="justify-center mb-8">Key Insight</Eyebrow>
             <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-ink-900 leading-snug mb-6">
               {t('insights_quote')}
             </h3>

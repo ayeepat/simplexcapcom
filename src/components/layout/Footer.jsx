@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/lib/LanguageContext';
 import { prefetchRoute } from '@/lib/prefetch';
+import Shape3D from '@/components/shared/Shape3D';
 
 export default function Footer() {
   const { t, lang } = useLanguage();
@@ -22,7 +23,9 @@ export default function Footer() {
   const office = { city: lang === 'ru' ? 'Москва' : 'Abu Dhabi', country: lang === 'ru' ? 'Россия' : 'UAE' };
 
   return (
-    <footer className="bg-ink-950 text-paper">
+    <footer className="relative isolate overflow-hidden bg-ink-950 text-paper">
+      <Shape3D shape="tetra" size={120} seed={3.1} speed={0.14} className="absolute -z-10 hidden lg:block right-[4%] bottom-28 text-paper/15" />
+      <Shape3D shape="cube" size={70} seed={1.2} speed={0.2} className="absolute -z-10 hidden lg:block right-[16%] top-16 text-tiffany/20" />
       <div className="border-b border-paper/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="font-mono text-[11px] text-paper/50 leading-relaxed tracking-wide">
@@ -35,8 +38,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-6">
-              <img src="/images/logo-mark.webp" alt="Simplex Capital" className="h-14 w-auto" width="62" height="56" loading="lazy" decoding="async" />
+            <div className="group flex items-center gap-3 mb-6 [perspective:500px]">
+              <img src="/images/logo-mark.webp" alt="Simplex Capital" className="h-14 w-auto transition-transform [transition-duration:900ms] ease-out group-hover:[transform:rotateY(360deg)]" width="62" height="56" loading="lazy" decoding="async" />
               <span className="font-display text-2xl tracking-tight leading-none">Simplex Capital</span>
             </div>
             <p className="text-paper/50 leading-relaxed max-w-sm mb-8">
@@ -60,7 +63,7 @@ export default function Footer() {
                         to={link.path}
                         onMouseEnter={() => prefetchRoute(link.path)}
                         onTouchStart={() => prefetchRoute(link.path)}
-                        className="text-paper/60 hover:text-paper text-sm transition-colors"
+                        className="underline-sweep pb-0.5 text-paper/60 hover:text-paper text-sm transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -74,7 +77,9 @@ export default function Footer() {
                 {lang === 'ru' ? 'Контакт' : 'Contact'}
               </h4>
               <ul className="space-y-3.5 text-sm text-paper/60">
-                <li>ir@simplex-cap.com</li>
+                <li>
+                  <a href="mailto:ir@simplex-cap.com" className="underline-sweep pb-0.5 transition-colors hover:text-paper">ir@simplex-cap.com</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -83,10 +88,10 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-paper/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="font-mono text-[11px] text-paper/40 tracking-wide">© 2026 SIMPLEX CAPITAL. {t('footer_rights').toUpperCase()}</p>
           <div className="flex gap-6">
-            <Link to="/Contact" className="font-mono text-[11px] text-paper/40 hover:text-paper/70 tracking-wide transition-colors">
+            <Link to="/PrivacyPolicy" className="font-mono text-[11px] text-paper/40 hover:text-paper/70 tracking-wide transition-colors">
               {lang === 'ru' ? 'КОНФИДЕНЦИАЛЬНОСТЬ' : 'PRIVACY POLICY'}
             </Link>
-            <Link to="/Contact" className="font-mono text-[11px] text-paper/40 hover:text-paper/70 tracking-wide transition-colors">
+            <Link to="/TermsOfUse" className="font-mono text-[11px] text-paper/40 hover:text-paper/70 tracking-wide transition-colors">
               {lang === 'ru' ? 'УСЛОВИЯ' : 'TERMS OF USE'}
             </Link>
           </div>

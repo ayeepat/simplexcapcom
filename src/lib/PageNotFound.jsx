@@ -1,4 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
+import Shape3D from '@/components/shared/Shape3D';
 
 export default function PageNotFound() {
   const location = useLocation();
@@ -7,6 +8,9 @@ export default function PageNotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-paper">
       <div className="max-w-md w-full text-center">
+        <div className="flex justify-center mb-4">
+          <Shape3D shape="fracture" size={150} speed={0.3} seed={0.4} className="text-tiffany-700/60" />
+        </div>
         <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-tiffany-700 mb-6">Error 404</div>
         <h1 className="font-display text-7xl text-ink-900 mb-6">404</h1>
         <div className="h-px w-16 bg-ink-900/15 mx-auto mb-6" />

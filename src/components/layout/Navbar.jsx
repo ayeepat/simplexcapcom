@@ -14,13 +14,14 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const navLinks = [
     { label: t('nav_home'), path: '/Home' },
-    { label: 'Fund', path: '/Fund' },
+    { label: t('nav_fund'), path: '/Fund' },
     { label: t('nav_strategy'), path: '/Strategy' },
     { label: t('nav_portfolio'), path: '/Portfolio' },
     { label: t('nav_team'), path: '/Team' },
@@ -37,11 +38,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 lg:h-24">
-          <Link to="/Home" className="flex items-center gap-3 flex-shrink-0">
+          <Link to="/Home" className="group flex items-center gap-3 flex-shrink-0">
             <img
               src="/images/logo-mark.webp"
               alt="Simplex Capital - Tech Venture Capital & Strategic Technology Investments"
-              className="h-14 w-auto"
+              className="h-14 w-auto transition-transform duration-500 ease-out group-hover:-translate-y-0.5 group-active:scale-95"
               width="62"
               height="56"
               fetchpriority="high"
@@ -62,14 +63,15 @@ export default function Navbar() {
                   onMouseEnter={() => prefetchRoute(link.path)}
                   onTouchStart={() => prefetchRoute(link.path)}
                   onFocus={() => prefetchRoute(link.path)}
-                  className={`relative py-2 font-sans text-[13px] font-medium uppercase tracking-[0.08em] transition-colors whitespace-nowrap ${
+                  aria-current={active ? 'page' : undefined}
+                  className={`group relative py-2 font-sans text-[13px] font-medium uppercase tracking-[0.08em] transition-colors whitespace-nowrap ${
                     active ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'
                   }`}
                 >
                   {link.label}
                   <span
-                    className={`absolute left-0 -bottom-0.5 h-px bg-tiffany-700 transition-all duration-300 ${
-                      active ? 'w-full' : 'w-0'
+                    className={`absolute left-0 -bottom-0.5 h-px w-full origin-left bg-tiffany-700 transition-transform duration-300 ease-out ${
+                      active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                     }`}
                   />
                 </Link>
